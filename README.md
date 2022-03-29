@@ -1,3 +1,3 @@
 # DevopsTalk
 Exemple For devops Talk
-With sonarcloud on default branch
+With sonarcloud on default branch develop
