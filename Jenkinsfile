@@ -28,13 +28,12 @@ pipeline {
                                 -Dsonar.host.url=http://192.168.1.142:9000 \
                                 -Dsonar.login=145320bcea88d369d3e027c16417fee59895bfdd"""
                     }
-                    stage("Quality Gate") {
-                        steps {
-                            timeout(time: 1, unit: 'HOURS') {
-                                waitForQualityGate abortPipeline: true
-                            }
-                         }   
-                    }
+                    
+                    steps {
+                        timeout(time: 1, unit: 'HOURS') {
+                            waitForQualityGate abortPipeline: true
+                        }
+                    }    
                 }
              }
         }
