@@ -6,8 +6,12 @@ import git
 
 @app.route('/')
 def hello_world():
-   repo = git.Repo(search_parent_directories=True)
-   sha = repo.head.object.hexsha
+   sha: "N/A"
+   try:
+      repo = git.Repo(search_parent_directories=True)
+      sha = repo.head.object.hexsha
+   except:
+      pass
    return render_template('index.html', sha=sha)
 
 
