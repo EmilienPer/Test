@@ -10,7 +10,7 @@ pipeline {
         
         stage('Build') {
             steps {
-               sh 'docker build -f Dockerfile.python.ci -t talk-devops-app-build:latest .'
+               sh 'docker build --no-cache -f Dockerfile.python.ci -t talk-devops-app-build:latest .'
             }
         }
         stage('Testing') {
@@ -38,7 +38,7 @@ pipeline {
         }
         stage('build release image'){
             steps {
-               sh 'docker build -f Dockerfile.flask -t talk-devops-app:${GIT_COMMIT} .'
+               sh 'docker build --no-cache -f Dockerfile.flask -t talk-devops-app:${GIT_COMMIT} .'
             }
         }
 
