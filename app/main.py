@@ -1,11 +1,14 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
+import git
 
 
 @app.route('/')
 def hello_world():
-   return 'Hey, we have Flask in a Docker container!'
+   repo = git.Repo(search_parent_directories=True)
+   sha = repo.head.object.hexsha
+   return render_template('index.html', sha=sha)
 
 
 if __name__ == '__main__':
