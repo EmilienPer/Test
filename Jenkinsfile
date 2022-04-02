@@ -42,7 +42,7 @@ pipeline {
             }
 
 
-        stage('Build & Deploy release images') {
+        stage('Deploy release images') {
             steps {
                
                withCredentials([string(credentialsId: 'HEROKU_API_KEY', variable: 'HEROKU_API_KEY_SECRET')]) {      
