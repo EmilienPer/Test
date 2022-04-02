@@ -7,7 +7,11 @@ pipeline {
                 git branch: 'develop', url: 'https://github.com/oxydedefer/DevopsTalk.git'
             }
         }
-        
+        stage('Build toolbox') {
+            steps {
+               sh 'docker build -f Dockerfile.python.toolbox -t talk-devops-toolbox:latest .'
+            }
+        }
         stage('Build') {
             steps {
                sh 'docker build --no-cache -f Dockerfile.python.ci -t talk-devops-app-build:latest .'

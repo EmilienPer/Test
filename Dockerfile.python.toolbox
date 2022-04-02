@@ -1,0 +1,13 @@
+
+
+FROM python:3.8-slim-buster
+RUN apt-get update && \
+    apt-get install -y wget unzip && \
+    wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip && \
+    unzip sonar-scanner-cli-4.7.0.2747-linux.zip && \
+    rm sonar-scanner-cli-4.7.0.2747-linux.zip && \
+    ln -s sonar-scanner-4.7.0.2747-linux/ sonar-scanner && \
+    apt-get purge -y --auto-remove unzip \
+    && rm -rf /var/lib/apt/lists/*
+ENV PATH="${PATH}:/sonar-scanner/bin"
+WORKDIR /app
