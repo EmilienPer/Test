@@ -7,7 +7,7 @@ RUN apt-get update && \
     ln -s sonar-scanner-4.7.0.2747-linux/ sonar-scanner && \
     apt-get purge -y --auto-remove unzip \
     && rm -rf /var/lib/apt/lists/*
-ENV PATH="/root/sonar-scanner/bin:${PATH}"
+ENV PATH="${PATH}:/sonar-scanner/bin"
 WORKDIR /app
 COPY app/. .  
 RUN pip3 install -r requirements.txt 
