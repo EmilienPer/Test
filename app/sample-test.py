@@ -16,7 +16,7 @@ class FlaskTestCase(unittest.TestCase):
         
     def test_home_title(self):
         response = self.client.get("/")
-        self.assertEqual(response.data.decode('UTF-8'), "Hey, we have Flask in a Docker container!")
+        self.assertIn("Hey, we have Flask in a Docker container!",response.data.decode('UTF-8'))
 
         
 if __name__ == '__main__':
