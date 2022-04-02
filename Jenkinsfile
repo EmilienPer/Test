@@ -26,7 +26,7 @@ pipeline {
                                 -Dsonar.projectKey=devops-talk \
                                 -Dsonar.sources=. \
                                 -Dsonar.host.url=http://192.168.1.142:9000 \
-                                -Dsonar.login=145320bcea88d369d3e027c16417fee59895bfdd"""
+                                -Dsonar.login=9a45255286579268e6beb7c11d04390f8fd79389"""
                     }
                 }
              }
@@ -38,10 +38,9 @@ pipeline {
         }
         stage('Build & Deploy release images') {
             steps {
-               sh 'docker build -f Dockerfile.flask -t talk-devops-app:latest .'
-            }
-            steps {
+               
                withCredentials([string(credentialsId: 'HEROKU_API_KEY', variable: 'HEROKU_API_KEY_SECRET')]) {      
+                    sh 'docker build -f Dockerfile.flask -t talk-devops-app:latest .'
                     sh '''
                         docker tag talk-devops-app:latest registry.heroku.com/devops-talk/web
                       
