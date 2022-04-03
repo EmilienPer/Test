@@ -26,10 +26,12 @@ pipeline {
                 }
                 stage('Code analysis Sonarqube') {
                     steps {
-                       sh """ docker run --rm -i talk-devops-app-build:latest sonar-scanner \
+                       sh """ docker run --rm -i talk-devops-app-build:latest 
+                       sonar-scanner \
                                 -Dsonar.projectKey=devops-talk \
                                 -Dsonar.sources=. \
                                 -Dsonar.host.url=http://host.docker.internal:9000 \
+                                -Dsonar.qualitygate.wait=true\
                                 -Dsonar.login=9a45255286579268e6beb7c11d04390f8fd79389"""
                     }
                 }

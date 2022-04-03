@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template
 app = Flask(__name__)
-
+app.config['WTF_CSRF_ENABLED'] = False
 
 @app.route('/')
 def hello_world():
