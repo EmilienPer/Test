@@ -1,7 +1,8 @@
 import os
 from flask import Flask, render_template
+from flask_wtf.csrf import CSRFProtect
 app = Flask(__name__)
-app.config['WTF_CSRF_ENABLED'] = False
+csrf = CSRFProtect(app)
 
 @app.route('/')
 def hello_world():
