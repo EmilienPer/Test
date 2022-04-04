@@ -58,9 +58,9 @@ pipeline {
         }
         stage('Clean Unused Docker image') {
             steps {
-               sh 'docker image rm talk-devops-app-build:latest'
-               sh 'docker image rm talk-devops-app:${GIT_COMMIT}'
-               sh 'docker rmi --force $(docker images  --filter "dangling=true" -q --no-trunc)'
+               sh 'docker image rm --force talk-devops-app-build:latest'
+               sh 'docker image rm --force talk-devops-app:${GIT_COMMIT}'
+               sh 'docker image rm --force $(docker images  --filter "dangling=true" -q --no-trunc)'
             }
         }
     }
