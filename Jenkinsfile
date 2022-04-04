@@ -37,11 +37,7 @@ pipeline {
                 }
              }
         }
-        stage('Clean build image') {
-            steps {
-               sh 'docker image rm talk-devops-app-build:latest'
-            }
-        }
+
         stage('build release image'){
             steps {
                sh 'docker build --no-cache -f Dockerfile.flask -t talk-devops-app:${GIT_COMMIT} .'
@@ -57,7 +53,15 @@ pipeline {
                     sh 'docker push registry.heroku.com/devops-talk/web'
                     sh 'HEROKU_API_KEY=${HEROKU_API_KEY_SECRET} heroku container:release web --app devops-talk'
                     sh 'docker image rm registry.heroku.com/devops-talk/web'
+                    
                 } 
+            }
+        }
+        stage('Clean Unused Docker image') {
+            steps {
+               sh 'docker image rm talk-devops-app-build:latest'
+               sh 'docker image rm talk-devops-app:${GIT_COMMIT}'
+               sh 'docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
             }
         }
     }
