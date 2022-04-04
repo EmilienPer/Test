@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('VCS') {
+        stage('SCM') {
             steps {
                 git branch: 'develop', url: 'https://github.com/oxydedefer/DevopsTalk.git'
             }
@@ -12,7 +12,7 @@ pipeline {
                sh 'docker build -f Dockerfile.python.toolbox -t talk-devops-toolbox:latest .'
             }
         }
-        stage('Build') {
+        stage('Build Flask CI images') {
             steps {
                sh 'docker build --no-cache -f Dockerfile.python.ci -t talk-devops-app-build:latest .'
             }
@@ -26,8 +26,7 @@ pipeline {
                 }
                 stage('Code analysis Sonarqube') {
                     steps {
-                       sh """ docker run --rm -i talk-devops-app-build:latest 
-                       sonar-scanner \
+                       sh """ docker run --rm -i talk-devops-app-build:latest sonar-scanner \
                                 -Dsonar.projectKey=devops-talk \
                                 -Dsonar.sources=. \
                                 -Dsonar.host.url=http://host.docker.internal:9000 \
