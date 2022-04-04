@@ -60,7 +60,7 @@ pipeline {
             steps {
                sh 'docker image rm talk-devops-app-build:latest'
                sh 'docker image rm talk-devops-app:${GIT_COMMIT}'
-               sh 'docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
+               sh 'docker rmi $(docker images --force --filter "dangling=true" -q --no-trunc)'
             }
         }
     }
