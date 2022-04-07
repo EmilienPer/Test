@@ -4,9 +4,8 @@ from flask_wtf.csrf import CSRFProtect
 app = Flask(__name__)
 csrf = CSRFProtect(app)
 
-#Sensitive content Do not at home ! 
-username = 'admin'
-password = 'admin'
+username = os.getenv("username")
+password = os.getenv("password")
 
 @app.route('/')
 def hello_world():
