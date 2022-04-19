@@ -4,7 +4,6 @@ from flask_wtf.csrf import CSRFProtect
 app = Flask(__name__)
 csrf = CSRFProtect(app)
 
-password="hardcoded"
    
 @app.route('/')
 def hello_world():
