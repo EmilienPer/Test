@@ -14,7 +14,7 @@ duration = Summary('duration_compute_seconds', 'Time spent in the compute() func
 @duration.time()
 @app.route('/')
 def hello_world():
-   time.sleep(random.uniform(0, 10))
+   # time.sleep(random.uniform(0, 10))
    return render_template('index.html')
 
 
