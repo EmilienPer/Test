@@ -23,17 +23,7 @@
             "name": "Python: Flask",
             "type": "python",
             "request": "launch",
-            "module": "flask",
-            "env": {
-                "FLASK_APP": "app\\app.py",
-                "FLASK_ENV": "development"
-            },
-            "args": [
-                "run",
-                "--no-debugger",
-                "--port",
-                "8000"
-            ],
+            "program": "app\\app.py",
             "jinja": true,
             "justMyCode": true
         },
