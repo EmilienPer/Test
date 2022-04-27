@@ -1,4 +1,6 @@
 import os
+import time
+import random
 from flask import Flask, render_template
 from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import Summary
