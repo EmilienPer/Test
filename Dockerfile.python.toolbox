@@ -1,6 +1,6 @@
 
 
-FROM docker.io/python:3.8-slim-buster
+FROM docker.io/python:3.11.0b1-bullseye
 RUN apt-get update && \
     apt-get install -y wget unzip && \
     wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip && \
