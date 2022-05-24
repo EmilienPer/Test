@@ -1,7 +1,7 @@
 FROM python:3.8-slim-buster
 WORKDIR /app
 COPY app/. .  
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org
 EXPOSE 8000
 ENTRYPOINT [ "python" ]
 CMD ["app.py" ]
