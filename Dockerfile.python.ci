@@ -1,5 +1,4 @@
 FROM docker.io/python:3.11.0b1-bullseye
 COPY app/. .  
-RUN curl "https://docs.podman.io/en/latest/markdown/podman-build.1.html"
 RUN pip3 install -r requirements.txt  --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org
 
