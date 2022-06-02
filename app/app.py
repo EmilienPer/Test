@@ -6,6 +6,7 @@ from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import Summary
 from flask_wtf.csrf import CSRFProtect
 app = Flask(__name__)
+app.config['APPLICATION_ROOT'] = '/test'
 csrf = CSRFProtect(app)
 metrics = PrometheusMetrics(app)
 metrics.info('app_info', 'Application info', version='1.0')
