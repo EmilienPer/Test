@@ -1,7 +1,13 @@
-general:
-  app_name: test
+main:
+  name: test
   port: 8000
   type: django
+  dockerfile: Dockerfile.flask
+  
+test:
+  dockerfile: Dockerfile.python.ci
+  command: python sample-test.py
+  
 database:
   postgres:
       user: test
