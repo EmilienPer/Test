@@ -1,7 +1,7 @@
 general:
   app_name: test
   port: 8000
-  
+  type: django
 database:
   postgres:
       user: test
