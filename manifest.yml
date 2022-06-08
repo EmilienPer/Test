@@ -10,7 +10,9 @@ test:
   
 database:
   postgres:
-      user: test
+      - test
+      - test2
+      - test3
       
 
 volume:
