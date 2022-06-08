@@ -8,6 +8,10 @@ test:
   dockerfile: Dockerfile.python.ci
   command: python sample-test.py
   
+database:
+  postgres:
+      user: test
+      
 
 volume:
   - '/etc/share:/etc/shre'
