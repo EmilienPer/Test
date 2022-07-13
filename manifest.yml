@@ -1,5 +1,5 @@
 main:
-  name: test
+  name: test2
   port: 8000
   type: django
   dockerfile: Dockerfile.flask
